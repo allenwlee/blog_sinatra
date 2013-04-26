@@ -1,12 +1,32 @@
 get '/' do
-  # Look in app/views/index.erb
   erb :index
 end
 
-get '/:word' do
-  p params[:word]
+post '/post' do
+  @post = Post.create(title: params[:title], body: params[:body])
+  
+  @tags = params[:tags].split(",").map do |t|
+    Tag.create(text: t)
+  end
+    
+  @tags.each do |t|
+    @post.tags << t
+  end
+  erb '/post'
 end
 
-post '/' do
-  p params[:word]
+get '/post' do
+  erb :post
+end
+
+get '/_tags' do
+  erb :_tags
+end
+
+get '/_tag' do
+  erb :_tag
+end
+
+get '/:title' do
+  erb :post
 end

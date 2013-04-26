@@ -1,0 +1,12 @@
+<div class="container">
+    <h2 class="form-signin-heading">
+      Tags for dis Post Only
+    </h2>
+    <ul class="nav nav-pills">
+      <%@post.tags.each do |p|  %>
+        <li class="active">
+          <a href="#"># <%=p.text %></a>
+        </li>      
+      <%end  %>
+    </ul>  
+</div>

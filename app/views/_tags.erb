@@ -1,0 +1,12 @@
+<div class="container">
+    <h2 class="form-signin-heading">
+      All Yer Tags
+    </h2>
+    <ul class="nav nav-pills">
+      <%Tag.all.each do |p|  %>
+        <li class="active">
+          <a href="#"># <%=p.text %></a>
+        </li>      
+      <%end  %>
+    </ul>  
+</div>
