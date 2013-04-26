@@ -5,7 +5,8 @@
     <ul class="nav nav-pills">
       <%@post.tags.each do |p|  %>
         <li class="active">
-          <a href="#"># <%=p.text %></a>
+          <%@post = p %>
+          <a href=/<%=@post.text %>># <%=@post.text %></a>
         </li>      
       <%end  %>
     </ul>  

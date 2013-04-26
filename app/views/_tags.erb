@@ -3,9 +3,10 @@
       All Yer Tags
     </h2>
     <ul class="nav nav-pills">
-      <%Tag.all.each do |p|  %>
+      <%Tag.all.each do |t|  %>
         <li class="active">
-          <a href="#"># <%=p.text %></a>
+          <% @tag = t %>
+          <a href=/<%=@tag.text%>><%=@tag.text %></a>
         </li>      
       <%end  %>
     </ul>  
