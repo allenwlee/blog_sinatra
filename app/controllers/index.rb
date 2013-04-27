@@ -2,6 +2,10 @@ get '/' do
   erb :index
 end
 
+get '/posts' do
+  erb :posts
+end
+
 post '/posts' do
   @post = Post.create(title: params[:title], body: params[:body])
   
@@ -15,14 +19,15 @@ post '/posts' do
   erb :posts
 end
 
+get '/:id/post/' do
+  @post = Post.find(params[:id])
+end
+
 get '/:tag' do
   @tag = Tag.find_by_text(params[:tag])
   erb :tag
 end
 
-get '/posts' do
-  erb :posts
-end
 
 get '/_tags' do
   erb :_tags

@@ -1,0 +1,9 @@
+<%Post.all.reverse.each do |p| %>
+  <div class="span4">
+    <h2 class="form-signin-heading">
+      <a href=/<%=p.id %>><%=p.title %></a>
+    </h2>
+    <p><%=p.body %></p>
+  </div>
+<% end %>
+
