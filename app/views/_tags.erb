@@ -1,4 +1,4 @@
-<div class="container">
+<div class="span12">
     <h2 class="form-signin-heading">
       All Yer Tags
     </h2>
@@ -6,7 +6,7 @@
       <%Tag.all.each do |t|  %>
         <li class="active">
           <% @tag = t %>
-          <a href=/<%=@tag.text%>><%=@tag.text %></a>
+          <a href=/tag/<%=@tag.text%>><%=@tag.text %></a>
         </li>      
       <%end  %>
     </ul>  

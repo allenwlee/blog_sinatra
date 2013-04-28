@@ -1,7 +1,7 @@
 <%Post.all.reverse.each do |p| %>
-  <div class="span4">
+  <div class="span4 custom-hero-unit">
     <h2 class="form-signin-heading">
-      <a href=/<%=p.id %>><%=p.title %></a>
+      <a href=/post/<%=p.id %>><%=p.title %></a>
     </h2>
     <p><%=p.body %></p>
   </div>

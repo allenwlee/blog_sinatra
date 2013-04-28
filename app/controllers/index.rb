@@ -6,28 +6,16 @@ get '/posts' do
   erb :posts
 end
 
-post '/posts' do
-  @post = Post.create(title: params[:title], body: params[:body])
-  
-  @tags = params[:tags].split(",").map do |t|
-    Tag.create(text: t)
-  end
-    
-  @tags.each do |t|
-    @post.tags << t
-  end
-  erb :posts
-end
 
-get '/:id/post/' do
-  @post = Post.find(params[:id])
-end
-
-get '/:tag' do
+post '/tag/:tag' do
   @tag = Tag.find_by_text(params[:tag])
   erb :tag
 end
 
+get '/tag/:tag' do
+  @tag = Tag.find_by_text(params[:tag])
+  erb :tag
+end
 
 get '/_tags' do
   erb :_tags
@@ -37,9 +25,32 @@ get '/_tag' do
   erb :_tag
 end
 
-get '/:id' do
-  @post = Post.where("id=?", params[:id]).first
+get '/_posts' do
+  erb :_posts
+end
+
+
+get '/post/:id' do
+  @post = Post.find_by_id(params[:id])
+  @tag = @post.tags.all
   erb :post
+end
+
+post '/post/:id' do
+  @post = Post.create(title: params[:title], body: params[:body])
+  
+  @tags = params[:tags].split(",").map do |t|
+    Tag.create(text: t)
+  end
+    
+  @tags.each do |t|
+    @post.tags << t
+  end
+  erb :post
+end
+
+get '/create_post' do
+  erb :create_post
 end
 
 get '/:text' do
@@ -47,3 +58,4 @@ get '/:text' do
   @tag = params[:text]
   erb :tag
 end
+
