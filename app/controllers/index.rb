@@ -28,7 +28,6 @@ get '/_posts' do
   erb :_posts
 end
 
-
 get '/post/:id' do
   @post = Post.find_by_id(params[:id])
   @tags = @post.tags
@@ -39,9 +38,8 @@ end
 post '/post/:id' do
   @post = Post.create(title: params[:title], body: params[:body])
   
-  @tags = params[:tags].split(",").map do |t|
-    Tag.create(text: t)
-  end
+  @tags = Tag.parse(params[:tags])
+  @tags.each {|t| puts "Hey it's #{t.text} with id of #{t.id}" }
     
   @tags.each do |t|
     @post.tags << t
