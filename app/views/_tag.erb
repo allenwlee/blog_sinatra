@@ -1,13 +1,9 @@
 <div class="container">
-    <h2 class="form-signin-heading">
-      Tags for dis Post Only
-    </h2>
-    <ul class="nav nav-pills">
-      <%@post.tags.each do |p|  %>
-        <li class="active">
-          <%@post = p %>
-          <a href=/<%=@post.text %>># <%=@post.text %></a>
-        </li>      
-      <%end  %>
-    </ul>  
+  <ul class="nav nav-pills">
+    <%@post.tags.each do |t| %>
+    <li class="active">
+      <a href=/tag/<%=t.id%>># <%=t.text %></a>
+    </li>      
+    <% end %>
+  </ul>  
 </div>

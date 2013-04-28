@@ -6,14 +6,13 @@ get '/posts' do
   erb :posts
 end
 
+# post '/tag/:id' do
+#   @tag = Tag.find_by_text(params[:id])
+#   erb :tag
+# end
 
-post '/tag/:tag' do
-  @tag = Tag.find_by_text(params[:tag])
-  erb :tag
-end
-
-get '/tag/:tag' do
-  @tag = Tag.find_by_text(params[:tag])
+get '/tag/:id' do
+  @tag = Tag.find_by_id(params[:id])
   erb :tag
 end
 
@@ -32,7 +31,8 @@ end
 
 get '/post/:id' do
   @post = Post.find_by_id(params[:id])
-  @tag = @post.tags.all
+  @tags = @post.tags
+  @date = @post.format_date
   erb :post
 end
 
@@ -53,9 +53,4 @@ get '/create_post' do
   erb :create_post
 end
 
-get '/:text' do
-  puts params
-  @tag = params[:text]
-  erb :tag
-end
 

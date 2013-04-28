@@ -5,8 +5,7 @@
     <ul class="nav nav-pills">
       <%Tag.all.each do |t|  %>
         <li class="active">
-          <% @tag = t %>
-          <a href=/tag/<%=@tag.text%>><%=@tag.text %></a>
+          <a href=/tag/<%=t.id%>><%=t.text %></a>
         </li>      
       <%end  %>
     </ul>  

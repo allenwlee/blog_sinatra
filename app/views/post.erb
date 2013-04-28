@@ -3,8 +3,9 @@
     <h2 class="form-signin-heading">
       <%=@post.title %>
     </h2>
+    <p><%=@date %></p>
     <p><%=@post.body %></p>
+    <%=erb :_tag, :layout => false %>
   </div>      
 </div>
 
-<%=erb :_tag, :layout => false %>
