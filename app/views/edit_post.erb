@@ -1,0 +1,9 @@
+<div class="span6">
+  <h2 class="form-signin-heading">Edit Yer Post</h2>
+  <form class="form-signin" method="post" action="/post/<%=@post.id%>/edit">
+    <input type="text" class="input-block-level"value=<%=@post.title%> name="title">
+    <textarea class="input-block-level" rows="10" name="body" value=<%=@post.body%>></textarea>
+    <input type="text" class="input-block-level"value=<%=@tags%> name="tags">
+    <input type="submit" class="btn btn-primary btn-large" value="Post Dis Sheeit">
+  </form>  
+</div>

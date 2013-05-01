@@ -39,7 +39,6 @@ post '/post/:id' do
   @post = Post.create(title: params[:title], body: params[:body])
   
   @tags = Tag.parse(params[:tags])
-  @tags.each {|t| puts "Hey it's #{t.text} with id of #{t.id}" }
     
   @tags.each do |t|
     @post.tags << t
@@ -51,4 +50,12 @@ get '/create_post' do
   erb :create_post
 end
 
+get '/post/:id/edit' do
+  erb :edit_post
+end
 
+post '/post/:id/edit' do
+  @post = Post.find_by_id(params[:id])
+  @tags = @post.tags
+  erb :edit_post
+end
